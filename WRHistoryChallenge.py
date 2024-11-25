@@ -1,9 +1,12 @@
 from createTMNFWRHistory import getTMNFTracks
-from WRImprovement import WRImprovement, formated_replay_time
+from WRImprovement import WRImprovement, format_time
 import json
+import os
 import subprocess
 
-GETCURRENTPBSPATH = 'C:/Users/Tobias/Documents/Programmieren/Python-Learn/TMNF Leaderboard/GetTMNFPBs/bin/Debug/net8.0/win-x64/GetTMNFPBs.exe'
+# Load configuration
+with open(os.path.join(os.path.dirname(__file__), 'config.json')) as f:
+    CONFIG = json.load(f)
 
 class WRHistoryChallenge:
     WRImprovements: list[WRImprovement]
@@ -45,7 +48,9 @@ class WRHistoryChallenge:
                 nextUnbeatenWRImprovements.append(improvement)
         return nextUnbeatenWRImprovements
 
-    def LoadCurrentPBs(self) -> dict[str, int | None]:
-        subprocess.run([GETCURRENTPBSPATH], creationflags=subprocess.CREATE_NO_WINDOW)
-        with open('PBs.json', 'r') as f:
-            self.currentPBs = {trackName: pbTime if pbTime != 0 else None for trackName, pbTime in json.load(f).items()}
+    def LoadCurrentPBs(self):
+        cmd = [os.path.join(os.path.dirname(__file__), CONFIG['paths']['cs_executable'])]
+        cmd.append(CONFIG['paths']['replays_folder'])
+            
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        self.currentPBs = json.loads(result.stdout)
