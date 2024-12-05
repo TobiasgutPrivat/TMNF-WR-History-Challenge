@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.pyc
-bin/
-obj/
-__pycache__/
-=======
 # Python
 __pycache__/
 *.py[cod]
@@ -66,4 +60,3 @@ bld/
 .Trashes
 ehthumbs.db
 Thumbs.db
->>>>>>> 95f85ed21370cdcf1d16547a8e28a02f9d536085
