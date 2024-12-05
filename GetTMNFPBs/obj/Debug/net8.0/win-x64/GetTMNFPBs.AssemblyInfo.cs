@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GetTMNFPBs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4f87baf02b0bed93e1dd55ec964c59d2f8cab27")]
 [assembly: System.Reflection.AssemblyProductAttribute("GetTMNFPBs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GetTMNFPBs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

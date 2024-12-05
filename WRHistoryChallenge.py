@@ -3,7 +3,7 @@ from WRImprovement import WRImprovement, formated_replay_time
 import json
 import subprocess
 
-GETCURRENTPBSPATH = 'C:/Users/Tobias/Documents/Programmieren/Python-Learn/TMNF Leaderboard/GetTMNFPBs/bin/Debug/net8.0/win-x64/GetTMNFPBs.exe'
+GETCURRENTPBSPATH = 'C:/Users/Tobias/Documents/Programmieren/TMNF WR History Challenge/GetTMNFPBs/bin/Debug/net8.0/win-x64/GetTMNFPBs.exe'
 
 class WRHistoryChallenge:
     WRImprovements: list[WRImprovement]
