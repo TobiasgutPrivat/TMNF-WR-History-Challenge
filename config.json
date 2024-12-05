@@ -1,0 +1,10 @@
+{
+    "paths": {
+        "replays_folder": "C:/Users/Tobias/Documents/TrackMania/Tracks/Replays/Autosaves/",
+        "cs_executable": "GetTMNFPBs/bin/Debug/net8.0/GetTMNFPBs.exe",
+        "wr_history_folder": "C:/Users/Tobias/Documents/TrackMania/Tracks/Replays/WRHistory/"
+    },
+    "api": {
+        "base_url": "https://tmnf.exchange"
+    }
+}

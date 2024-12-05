@@ -1,7 +1,5 @@
 from datetime import datetime
 import requests
-import os
-import subprocess
 from dataclasses import dataclass
 
 @dataclass
@@ -14,7 +12,7 @@ class WRImprovement:
     ReplayPath: str
 
     def DownloadReplay(self):
-        url = f"https://tmnf.exchange/recordgbx/{self.replay_id}"
+        url = f"{CONFIG['api']['base_url']}/recordgbx/{self.replay_id}"
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -27,9 +25,8 @@ class WRImprovement:
             self.DownloadReplay()
         subprocess.run(['cmd', '/c', 'start', '', self.ReplayPath + "replay.gbx"], shell=True)
 
-def formated_replay_time(ms) -> str:
-    seconds, milliseconds = divmod(ms, 1000)
-
+def format_time(milliseconds):
+    seconds = milliseconds / 1000
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     

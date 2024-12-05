@@ -3,12 +3,17 @@ from datetime import datetime
 from functools import lru_cache
 import pickle
 from WRImprovement import WRImprovement
+import json
+import os
 
-WRHistoryFolder = "C:/Users/Tobias/Documents/TrackMania/Tracks/Replays/WRHistory/"
+# Load configuration
+with open(os.path.join(os.path.dirname(__file__), 'config.json')) as f:
+    CONFIG = json.load(f)
 
+WRHistoryFolder = CONFIG["paths"]["wr_history_folder"]
 @lru_cache(maxsize=0)
 def getMapReplays(mapID: str, afterID: str = None) -> list:
-    url = "https://tmnf.exchange/api/replays"
+    url = f"{CONFIG['api']['base_url']}/api/replays"
     params = {
         "fields": "ReplayId,ReplayTime,User.Name,ReplayAt",  # Select relevant fields
         "trackId": mapID,  # Replace with the actual track ID
@@ -46,7 +51,7 @@ def createWRImprovement(data) -> WRImprovement:
         user_name = data["User"]["Name"],
         replay_at = replay_at,
         track_name = data["TrackName"],
-        ReplayPath = WRHistoryFolder + f"{data["TrackName"]}_{replay_at.strftime("%Y-%m-%d")}/"
+        ReplayPath = os.path.join(CONFIG["paths"]["wr_history_folder"], f"{data["TrackName"]}_{replay_at.strftime("%Y-%m-%d")}/")
     )
 
 def getAllWRImprovements(mapID: str) -> list:
@@ -62,7 +67,7 @@ def getAllWRImprovements(mapID: str) -> list:
     return AllImprovements
 
 def getTMNFTracks() -> list:
-    url = "https://tmnf.exchange/api/tracks"
+    url = f"{CONFIG['api']['base_url']}/api/tracks"
     params = {
         "fields": "TrackId,TrackName",  # Select relevant fields
         "author": "Nadeo",  # Replace with the actual track ID
