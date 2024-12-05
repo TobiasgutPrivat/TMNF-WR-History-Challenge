@@ -38,7 +38,7 @@ class WRHistoryChallenge:
 
     def getSelectedWRImprovementInfo(self) -> tuple[str, str, str, int | None]:
         improvement = self.WRImprovements[self.selectedWRImprovementIndex]
-        return (improvement.track_name, improvement.user_name, formated_replay_time(improvement.replay_time), formated_replay_time(self.currentPBs.get(improvement.track_name)))
+        return (improvement.track_name, improvement.user_name, format_time(improvement.replay_time), format_time(self.currentPBs.get(improvement.track_name)))
     
     def GetNextUnbeatenWRImprovements(self) -> list[WRImprovement]:
         nextUnbeatenWRImprovements = []

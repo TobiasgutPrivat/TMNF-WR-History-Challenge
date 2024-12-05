@@ -2,6 +2,13 @@ from datetime import datetime
 import requests
 from dataclasses import dataclass
 
+import json
+import os
+import subprocess
+
+with open(os.path.join(os.path.dirname(__file__), 'config.json')) as f:
+    CONFIG = json.load(f)
+
 @dataclass
 class WRImprovement:
     replay_id: int
@@ -26,7 +33,7 @@ class WRImprovement:
         subprocess.run(['cmd', '/c', 'start', '', self.ReplayPath + "replay.gbx"], shell=True)
 
 def format_time(milliseconds):
-    seconds = milliseconds / 1000
+    seconds, milliseconds = divmod(milliseconds, 1000)
     hours, remainder = divmod(seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
     

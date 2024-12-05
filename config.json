@@ -1,7 +1,7 @@
 {
     "paths": {
         "replays_folder": "C:/Users/Tobias/Documents/TrackMania/Tracks/Replays/Autosaves/",
-        "cs_executable": "GetTMNFPBs/bin/Debug/net8.0/GetTMNFPBs.exe",
+        "cs_executable": "GetTMNFPBs/bin/Debug/net8.0/win-x64/GetTMNFPBs.exe",
         "wr_history_folder": "C:/Users/Tobias/Documents/TrackMania/Tracks/Replays/WRHistory/"
     },
     "api": {

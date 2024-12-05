@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from ttkbootstrap import Style
 from WRHistoryChallenge import WRHistoryChallenge
-from WRImprovement import formated_replay_time
+from WRImprovement import format_time
 
 class WRHistoryChallengeUI:
     def __init__(self, root, wr_history_challenge: WRHistoryChallenge):
@@ -71,7 +71,7 @@ class WRHistoryChallengeUI:
         skipped_wr = self.wr_history_challenge.GetSkippedWRImprovements()
         self.skipped_listbox.delete(0, tk.END)
         for improvement in skipped_wr:
-            self.skipped_listbox.insert(tk.END, f"{improvement.track_name} - {formated_replay_time(improvement.replay_time)} - {improvement.user_name}")
+            self.skipped_listbox.insert(tk.END, f"{improvement.track_name} - {format_time(improvement.replay_time)} - {improvement.user_name}")
 
         # Selected WR Improvement
         track_name, user_name, replay_time, pb_time = self.wr_history_challenge.getSelectedWRImprovementInfo()
@@ -82,7 +82,7 @@ class WRHistoryChallengeUI:
         self.next_listbox.delete(0, tk.END)
         for next_wr in next_wrs:
             if next_wr:
-                self.next_listbox.insert(tk.END, f"{next_wr.track_name} - {formated_replay_time(next_wr.replay_time)} - {next_wr.user_name}")
+                self.next_listbox.insert(tk.END, f"{next_wr.track_name} - {format_time(next_wr.replay_time)} - {next_wr.user_name}")
 
     def play_selected(self):
         self.wr_history_challenge.playSelectedWRImprovement()
